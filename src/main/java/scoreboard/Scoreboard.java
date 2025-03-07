@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Scoreboard {
 
-    void addMatch(Team hometeam, Team awayTeam);
+    void addMatch(Team homeTeam, Team awayTeam);
 
     List<Match> getMatches();
 }

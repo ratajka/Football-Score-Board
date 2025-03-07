@@ -38,14 +38,17 @@ class FootballScoreboardTest {
     @Test
     void shouldNotAddNewMatchWhenSameMatchExists() {
         //given
-        Team homeTeam = new Team("Germany");
-        Team awayTeam = new Team("France");
+        Team homeTeam = new Team("Spain");
+        Team awayTeam = new Team("Brazil");
+
+        Team homeTeam1 = new Team("Spain");
+        Team awayTeam1 = new Team("Brazil");
 
         //when
         scoreboard.addMatch(homeTeam, awayTeam);
 
         //then
-        assertThrows(ScoreboardException.class, () -> scoreboard.addMatch(homeTeam, awayTeam));
+        assertThrows(ScoreboardException.class, () -> scoreboard.addMatch(homeTeam1, awayTeam1));
     }
 
 }
