@@ -2,6 +2,7 @@ package scoreboard;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scoreboard.exception.ScoreboardException;
 import scoreboard.model.Team;
 
 import java.util.ArrayList;
@@ -32,6 +33,19 @@ class FootballScoreboardTest {
         assertFalse(scoreboard.getMatches().isEmpty());
         assertTrue(scoreboard.getMatches().stream().anyMatch(match -> "Spain".equals(match.getHomeTeam().getName())));
         assertTrue(scoreboard.getMatches().stream().anyMatch(match -> "Brazil".equals(match.getAwayTeam().getName())));
+    }
+
+    @Test
+    void shouldNotAddNewMatchWhenSameMatchExists() {
+        //given
+        Team homeTeam = new Team("Germany");
+        Team awayTeam = new Team("France");
+
+        //when
+        scoreboard.addMatch(homeTeam, awayTeam);
+
+        //then
+        assertThrows(ScoreboardException.class, () -> scoreboard.addMatch(homeTeam, awayTeam));
     }
 
 }
