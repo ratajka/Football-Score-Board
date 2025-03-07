@@ -20,11 +20,11 @@ public class FootballMatch implements Match {
 
     @Override
     public Team getHomeTeam() {
-        return null;
+        return homeTeam;
     }
 
     @Override
     public Team getAwayTeam() {
-        return null;
+        return awayTeam;
     }
 }
