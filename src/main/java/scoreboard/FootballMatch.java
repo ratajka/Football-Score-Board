@@ -15,7 +15,7 @@ public class FootballMatch implements Match {
 
     @Override
     public int getScore() {
-        return 0;
+        return homeTeam.getScore() + awayTeam.getScore();
     }
 
     @Override

@@ -51,7 +51,7 @@ class FootballMatchTest {
         awayTeam.setScore(6);
 
         //then
-        assertEquals(6,footballMatch.getScore());
+        assertEquals(12,footballMatch.getScore());
     }
 
 }
