@@ -32,7 +32,6 @@ class FootballScoreboardTest {
         assertFalse(scoreboard.getMatches().isEmpty());
         assertTrue(scoreboard.getMatches().stream().anyMatch(match -> "Spain".equals(match.getHomeTeam().getName())));
         assertTrue(scoreboard.getMatches().stream().anyMatch(match -> "Brazil".equals(match.getAwayTeam().getName())));
-
     }
 
 }

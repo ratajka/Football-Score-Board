@@ -14,11 +14,14 @@ public class FootballScoreboard implements Scoreboard {
 
     @Override
     public void addMatch(Team homeTeam, Team awayTeam) {
+        FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
+
+        footballMatches.add(footballMatch);
 
     }
 
     @Override
     public List<Match> getMatches() {
-        return List.of();
+        return footballMatches;
     }
 }
