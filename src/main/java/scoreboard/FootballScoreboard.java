@@ -30,4 +30,9 @@ public class FootballScoreboard implements Scoreboard {
     public List<Match> getMatches() {
         return footballMatches;
     }
+
+    @Override
+    public void updateScore(Team homeTeam, Team awayTeam) {
+        System.out.println("Nothing yet");
+    }
 }

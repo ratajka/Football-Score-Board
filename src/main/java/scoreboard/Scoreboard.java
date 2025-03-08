@@ -9,4 +9,6 @@ public interface Scoreboard {
     void addMatch(Team homeTeam, Team awayTeam);
 
     List<Match> getMatches();
+
+    void updateScore(Team homeTeam, Team awayTeam);
 }

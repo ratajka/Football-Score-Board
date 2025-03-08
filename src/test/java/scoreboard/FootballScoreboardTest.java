@@ -7,6 +7,7 @@ import scoreboard.model.Team;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,6 +50,24 @@ class FootballScoreboardTest {
 
         //then
         assertThrows(ScoreboardException.class, () -> scoreboard.addMatch(homeTeam1, awayTeam1));
+    }
+
+    @Test
+    void shouldUpdateScore(){
+        //given
+        Team homeTeam = new Team("Mexico");
+        Team awayTeam = new Team("Canada");
+
+        scoreboard.addMatch(homeTeam, awayTeam);
+        homeTeam.setScore(3);
+        //when
+        scoreboard.updateScore(homeTeam, awayTeam);
+
+        //then
+        Optional<Match> first = scoreboard.getMatches().stream().findFirst();
+        int score = first.get().getScore();
+        assertTrue(score == 3);
+
     }
 
 }
