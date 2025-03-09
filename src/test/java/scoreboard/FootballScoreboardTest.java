@@ -59,8 +59,6 @@ class FootballScoreboardTest {
 
         scoreboard.startMatch(homeTeam, awayTeam);
 
-        homeTeam.setScore(0);
-        awayTeam.setScore(5);
         //when
         scoreboard.updateScore(homeTeam, awayTeam, 0, 5);
 
@@ -68,6 +66,16 @@ class FootballScoreboardTest {
         assertEquals(0, homeTeam.getScore());
         assertEquals(5, awayTeam.getScore());
 
+    }
+
+    @Test
+    void shouldNotUpdateScoreIfMatchNotExist() {
+        //given
+        Team homeTeam = new Team("Mexico");
+        Team awayTeam = new Team("Canada");
+
+        //then
+        assertThrows(ScoreboardException.class, () -> scoreboard.updateScore(homeTeam, awayTeam, 0, 5));
     }
 
     @Test
