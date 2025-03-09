@@ -21,7 +21,7 @@ public class FootballScoreboard implements Scoreboard {
         FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
         if (footballMatches.contains(footballMatch)) {
             throw new ScoreboardException(
-                    "It is not possible to add the same match"
+                    "It is not possible to start the same match"
             );
         }
 
@@ -36,6 +36,7 @@ public class FootballScoreboard implements Scoreboard {
 
     @Override
     public void updateScore(Team homeTeam, Team awayTeam, int homeScore, int awayScore) {
+        verifyFootballMatch(homeTeam, awayTeam);
         for (Match match : footballMatches) {
             if (match.getHomeTeam().getName().equals(homeTeam.getName()) && match.getAwayTeam().getName().equals(awayTeam.getName())) {
                 homeTeam.setScore(homeScore);
@@ -46,13 +47,11 @@ public class FootballScoreboard implements Scoreboard {
 
     @Override
     public void finishMatch(Team homeTeam, Team awayTeam) {
-        FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
-        if (!footballMatches.contains(footballMatch)) {
-            throw new ScoreboardException("This Match does not exist");
-        }
+        FootballMatch footballMatch = verifyFootballMatch(homeTeam, awayTeam);
         summary.add(footballMatch);
         footballMatches.remove(footballMatch);
     }
+
 
     @Override
     public List<Match> getSummary() {
@@ -62,5 +61,13 @@ public class FootballScoreboard implements Scoreboard {
                         .reversed()
         );
         return summary;
+    }
+
+    private FootballMatch verifyFootballMatch(Team homeTeam, Team awayTeam) {
+        FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
+        if (!footballMatches.contains(footballMatch)) {
+            throw new ScoreboardException("It is not possible to update match if it does not exist");
+        }
+        return footballMatch;
     }
 }
