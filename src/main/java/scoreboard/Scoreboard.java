@@ -13,4 +13,5 @@ public interface Scoreboard {
     void updateScore(Team homeTeam, Team awayTeam, int homeScore, int awayScore);
 
     void removeMatch(Team homeTeam, Team awayTeam);
+
 }

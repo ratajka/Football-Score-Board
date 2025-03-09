@@ -3,6 +3,7 @@ package scoreboard;
 import scoreboard.exception.ScoreboardException;
 import scoreboard.model.Team;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class FootballScoreboard implements Scoreboard {
