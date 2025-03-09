@@ -32,19 +32,13 @@ public class FootballScoreboard implements Scoreboard {
     }
 
     @Override
-    public void updateScore(Team homeTeam, Team awayTeam) {
-
-    }
-
-    @Override
-    public void updateScore(Team homeTeam, Team awayTeam, int score) {
-        for( Match match: footballMatches){
-            if(match.getHomeTeam().getName().equals(homeTeam.getName()) && match.getAwayTeam().getName().equals(awayTeam.getName())){
-                homeTeam.setScore(score);
-                awayTeam.setScore(score);
+    public void updateScore(Team homeTeam, Team awayTeam, int homeScore, int awayScore) {
+        for (Match match : footballMatches) {
+            if (match.getHomeTeam().getName().equals(homeTeam.getName()) && match.getAwayTeam().getName().equals(awayTeam.getName())) {
+                homeTeam.setScore(homeScore);
+                awayTeam.setScore(awayScore);
             }
         }
-        System.out.println("Nothing yet");
     }
 
     @Override

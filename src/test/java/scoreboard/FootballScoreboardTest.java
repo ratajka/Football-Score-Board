@@ -62,7 +62,7 @@ class FootballScoreboardTest {
         homeTeam.setScore(0);
         awayTeam.setScore(5);
         //when
-        scoreboard.updateScore(homeTeam, awayTeam, 0);
+        scoreboard.updateScore(homeTeam, awayTeam, 0, 5);
 
         //then
         assertEquals(0, homeTeam.getScore());
@@ -72,7 +72,7 @@ class FootballScoreboardTest {
 
     @Test
     void shouldRemoveMatchFromScoreboard() {
-        //then
+        //given
         Team homeTeam = new Team("Germany");
         Team awayTeam = new Team("France");
 
@@ -81,6 +81,16 @@ class FootballScoreboardTest {
         scoreboard.removeMatch(homeTeam, awayTeam);
         //then
         assertTrue(scoreboard.getMatches().isEmpty());
+    }
+
+    @Test
+    void shouldNotRemoveMatchWhenIsNotExist() {
+        //given
+        Team homeTeam = new Team("USA");
+        Team awayTeam = new Team("Poland");
+
+        //then
+        assertThrows(ScoreboardException.class, () -> scoreboard.removeMatch(homeTeam, awayTeam));
     }
 
 }
