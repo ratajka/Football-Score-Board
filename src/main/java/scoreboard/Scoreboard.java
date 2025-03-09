@@ -11,4 +11,6 @@ public interface Scoreboard {
     List<Match> getMatches();
 
     void updateScore(Team homeTeam, Team awayTeam);
+
+    void removeMatch(Team homeTeam, Team awayTeam);
 }

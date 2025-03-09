@@ -2,6 +2,8 @@ package scoreboard;
 
 import scoreboard.model.Team;
 
+import java.time.LocalDateTime;
+
 public interface Match {
 
     int getScore();
@@ -9,5 +11,7 @@ public interface Match {
     Team getHomeTeam();
 
     Team getAwayTeam();
+
+    LocalDateTime getStartTime();
 
 }

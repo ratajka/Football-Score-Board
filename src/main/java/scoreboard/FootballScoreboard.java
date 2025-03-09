@@ -3,6 +3,7 @@ package scoreboard;
 import scoreboard.exception.ScoreboardException;
 import scoreboard.model.Team;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class FootballScoreboard implements Scoreboard {
@@ -34,5 +35,10 @@ public class FootballScoreboard implements Scoreboard {
     @Override
     public void updateScore(Team homeTeam, Team awayTeam) {
         System.out.println("Nothing yet");
+    }
+
+    @Override
+    public void removeMatch(Team homeTeam, Team awayTeam) {
+
     }
 }
