@@ -3,6 +3,8 @@ package scoreboard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scoreboard.exception.ScoreboardException;
+import scoreboard.match.FootballMatch;
+import scoreboard.match.Match;
 import scoreboard.model.Team;
 
 import java.util.ArrayList;

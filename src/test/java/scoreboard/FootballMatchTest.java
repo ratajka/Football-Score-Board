@@ -1,6 +1,7 @@
 package scoreboard;
 
 import org.junit.jupiter.api.Test;
+import scoreboard.match.FootballMatch;
 import scoreboard.model.Team;
 
 

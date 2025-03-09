@@ -1,6 +1,8 @@
 package scoreboard;
 
 import scoreboard.exception.ScoreboardException;
+import scoreboard.match.FootballMatch;
+import scoreboard.match.Match;
 import scoreboard.model.Team;
 
 import java.util.ArrayList;

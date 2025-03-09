@@ -1,5 +1,6 @@
 package scoreboard;
 
+import scoreboard.match.Match;
 import scoreboard.model.Team;
 
 import java.util.List;
