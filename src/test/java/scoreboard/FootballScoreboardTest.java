@@ -21,13 +21,13 @@ class FootballScoreboardTest {
     }
 
     @Test
-    void shouldAddNewMatch() {
+    void shouldStartNewMatch() {
         //given
         Team homeTeam = new Team("Spain");
         Team awayTeam = new Team("Brazil");
 
         //when
-        scoreboard.addMatch(homeTeam, awayTeam);
+        scoreboard.startMatch(homeTeam, awayTeam);
 
         //then
         assertFalse(scoreboard.getMatches().isEmpty());
@@ -36,7 +36,7 @@ class FootballScoreboardTest {
     }
 
     @Test
-    void shouldNotAddNewMatchWhenSameMatchExists() {
+    void shouldNotStartNewMatchWhenSameMatchExists() {
         //given
         Team homeTeam = new Team("Spain");
         Team awayTeam = new Team("Brazil");
@@ -45,10 +45,10 @@ class FootballScoreboardTest {
         Team awayTeam1 = new Team("Brazil");
 
         //when
-        scoreboard.addMatch(homeTeam, awayTeam);
+        scoreboard.startMatch(homeTeam, awayTeam);
 
         //then
-        assertThrows(ScoreboardException.class, () -> scoreboard.addMatch(homeTeam1, awayTeam1));
+        assertThrows(ScoreboardException.class, () -> scoreboard.startMatch(homeTeam1, awayTeam1));
     }
 
     @Test
@@ -57,7 +57,7 @@ class FootballScoreboardTest {
         Team homeTeam = new Team("Mexico");
         Team awayTeam = new Team("Canada");
 
-        scoreboard.addMatch(homeTeam, awayTeam);
+        scoreboard.startMatch(homeTeam, awayTeam);
 
         homeTeam.setScore(0);
         awayTeam.setScore(5);
@@ -71,30 +71,30 @@ class FootballScoreboardTest {
     }
 
     @Test
-    void shouldRemoveMatchFromScoreboard() {
+    void shouldFinishMatchFromScoreboard() {
         //given
         Team homeTeam = new Team("Germany");
         Team awayTeam = new Team("France");
 
-        scoreboard.addMatch(homeTeam, awayTeam);
+        scoreboard.startMatch(homeTeam, awayTeam);
         //when
-        scoreboard.removeMatch(homeTeam, awayTeam);
+        scoreboard.finishMatch(homeTeam, awayTeam);
         //then
         assertTrue(scoreboard.getMatches().isEmpty());
     }
 
     @Test
-    void shouldNotRemoveMatchWhenIsNotExist() {
+    void shouldNotFinishMatchWhenIsNotExist() {
         //given
         Team homeTeam = new Team("USA");
         Team awayTeam = new Team("Poland");
 
         //then
-        assertThrows(ScoreboardException.class, () -> scoreboard.removeMatch(homeTeam, awayTeam));
+        assertThrows(ScoreboardException.class, () -> scoreboard.finishMatch(homeTeam, awayTeam));
     }
 
     @Test
-    void shouldReturnSummary(){
+    void shouldReturnSummary() {
         //given
         Team homeTeam1 = new Team("Mexico");
         Team awayTeam1 = new Team("Canada");
@@ -111,23 +111,28 @@ class FootballScoreboardTest {
         Team homeTeam5 = new Team("Argentina");
         Team awayTeam5 = new Team("Australia");
 
-        scoreboard.addMatch(homeTeam1, awayTeam1);
-        scoreboard.updateScore(homeTeam1, awayTeam1, 0,5);
+        scoreboard.startMatch(homeTeam1, awayTeam1);
+        scoreboard.updateScore(homeTeam1, awayTeam1, 0, 5);
+        scoreboard.finishMatch(homeTeam1, awayTeam1);
 
-        scoreboard.addMatch(homeTeam2, awayTeam2);
-        scoreboard.updateScore(homeTeam2, awayTeam2, 10,2);
+        scoreboard.startMatch(homeTeam2, awayTeam2);
+        scoreboard.updateScore(homeTeam2, awayTeam2, 10, 2);
+        scoreboard.finishMatch(homeTeam2, awayTeam2);
 
-        scoreboard.addMatch(homeTeam3, awayTeam3);
-        scoreboard.updateScore(homeTeam3, awayTeam3, 2,2);
+        scoreboard.startMatch(homeTeam3, awayTeam3);
+        scoreboard.updateScore(homeTeam3, awayTeam3, 2, 2);
+        scoreboard.finishMatch(homeTeam3, awayTeam3);
 
-        scoreboard.addMatch(homeTeam4, awayTeam4);
-        scoreboard.updateScore(homeTeam4, awayTeam4, 6,6);
+        scoreboard.startMatch(homeTeam4, awayTeam4);
+        scoreboard.updateScore(homeTeam4, awayTeam4, 6, 6);
+        scoreboard.finishMatch(homeTeam4, awayTeam4);
 
-        scoreboard.addMatch(homeTeam5, awayTeam5);
-        scoreboard.updateScore(homeTeam5, awayTeam5, 3,1);
+        scoreboard.startMatch(homeTeam5, awayTeam5);
+        scoreboard.updateScore(homeTeam5, awayTeam5, 3, 1);
+        scoreboard.finishMatch(homeTeam5, awayTeam5);
 
         //when
-        List <Match> orderedFootballMatches = scoreboard.getSummary();
+        List<Match> orderedFootballMatches = scoreboard.getSummary();
 
         //then
         assertFalse(orderedFootballMatches.isEmpty());

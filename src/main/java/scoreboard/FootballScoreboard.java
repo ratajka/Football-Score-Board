@@ -3,19 +3,21 @@ package scoreboard;
 import scoreboard.exception.ScoreboardException;
 import scoreboard.model.Team;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class FootballScoreboard implements Scoreboard {
 
     private final List<Match> footballMatches;
+    private final List<Match> summary = new ArrayList<>();
 
     public FootballScoreboard(List<Match> footballMatches) {
         this.footballMatches = footballMatches;
     }
 
     @Override
-    public void addMatch(Team homeTeam, Team awayTeam) {
+    public void startMatch(Team homeTeam, Team awayTeam) {
         FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
         if (footballMatches.contains(footballMatch)) {
             throw new ScoreboardException(
@@ -43,21 +45,22 @@ public class FootballScoreboard implements Scoreboard {
     }
 
     @Override
-    public void removeMatch(Team homeTeam, Team awayTeam) {
+    public void finishMatch(Team homeTeam, Team awayTeam) {
         FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
         if (!footballMatches.contains(footballMatch)) {
             throw new ScoreboardException("This Match does not exist");
         }
+        summary.add(footballMatch);
         footballMatches.remove(footballMatch);
     }
 
     @Override
     public List<Match> getSummary() {
-        footballMatches.sort(
+        summary.sort(
                 Comparator.comparing(Match::getScore)
                         .thenComparing(Match::getStartTime)
                         .reversed()
         );
-        return footballMatches;
+        return summary;
     }
 }
