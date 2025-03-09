@@ -62,7 +62,7 @@ class FootballScoreboardTest {
         homeTeam.setScore(0);
         awayTeam.setScore(5);
         //when
-        scoreboard.updateScore(homeTeam, awayTeam);
+        scoreboard.updateScore(homeTeam, awayTeam, 0);
 
         //then
         assertEquals(0, homeTeam.getScore());
