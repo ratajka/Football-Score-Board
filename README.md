@@ -1,9 +1,10 @@
 # Live Football World Cup Scoreboard
 
 The repository is simple solution for the implementation of the Live Football World Cup Score Board
-To manage the project used
+
 
 ### Guidelines
+
 1. Clone this repository
 2. Go to src/test/java and run FootballScoreboardTest.java
 
