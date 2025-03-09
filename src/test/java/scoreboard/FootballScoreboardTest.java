@@ -127,7 +127,7 @@ class FootballScoreboardTest {
         scoreboard.updateScore(homeTeam5, awayTeam5, 3,1);
 
         //when
-        List <Match> orderedFootballMatches = new ArrayList<>();
+        List <Match> orderedFootballMatches = scoreboard.getSummary();
 
         //then
         assertFalse(orderedFootballMatches.isEmpty());

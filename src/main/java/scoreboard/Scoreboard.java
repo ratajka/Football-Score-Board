@@ -14,4 +14,5 @@ public interface Scoreboard {
 
     void removeMatch(Team homeTeam, Team awayTeam);
 
+    List<Match> getSummary();
 }

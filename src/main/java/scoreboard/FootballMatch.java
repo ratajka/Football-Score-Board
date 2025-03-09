@@ -46,9 +46,4 @@ public class FootballMatch implements Match {
         return Objects.equals(homeTeam.getName(), footballMatch.homeTeam.getName())
                 && Objects.equals(awayTeam.getName(), footballMatch.awayTeam.getName());
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(homeTeam, awayTeam);
-    }
 }

@@ -50,4 +50,14 @@ public class FootballScoreboard implements Scoreboard {
         }
         footballMatches.remove(footballMatch);
     }
+
+    @Override
+    public List<Match> getSummary() {
+        footballMatches.sort(
+                Comparator.comparing(Match::getScore)
+                        .thenComparing(Match::getStartTime)
+                        .reversed()
+        );
+        return footballMatches;
+    }
 }
