@@ -44,7 +44,9 @@ public class FootballScoreboard implements Scoreboard {
     @Override
     public void removeMatch(Team homeTeam, Team awayTeam) {
         FootballMatch footballMatch = new FootballMatch(homeTeam, awayTeam);
+        if (!footballMatches.contains(footballMatch)) {
+            throw new ScoreboardException("This Match does not exist");
+        }
         footballMatches.remove(footballMatch);
-
     }
 }
