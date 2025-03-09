@@ -3,7 +3,6 @@ package scoreboard;
 import scoreboard.exception.ScoreboardException;
 import scoreboard.model.Team;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class FootballScoreboard implements Scoreboard {
